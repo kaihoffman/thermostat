@@ -14,8 +14,11 @@ Thermostat.prototype.tempUp = function() {
   if (this.powerSaving === true && this.temperature < 25) {
     this.temperature += 1;
   }
+  else if (this.powerSaving === false && this.temperature < 32) {
+    this.temperature += 1;
+  }
   else {
-    throw new Error("Power saving settings limit raising temperature.")
+    throw new Error("Temperature limit reached.")
   }
 };
 

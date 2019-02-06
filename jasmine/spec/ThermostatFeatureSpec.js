@@ -28,6 +28,16 @@ describe('Features', function() {
     for (var i = 20; i < 25; i++) {
         thermostat.tempUp();
     }
-    expect( function() { thermostat.tempUp()} ).toThrow(new Error("Power saving settings limit raising temperature."))
+    expect( function() { thermostat.tempUp()} ).toThrow(new Error("Temperature limit reached."))
+  });
+
+  it('allows temperature of 32 as maximum if power saving off', function() {
+    thermostat.powerSaving = false;
+    for (var i = 20; i < 32; i++) {
+      thermostat.tempUp();
+    }
+    expect ( function() { thermostat.tempUp() }).toThrow(new Error("Temperature limit reached."))
+
+
   });
 });
