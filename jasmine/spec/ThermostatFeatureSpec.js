@@ -21,6 +21,13 @@ describe('Features', function() {
         thermostat.tempDown();
       }
       expect( function() {thermostat.tempDown()
-        }).toThrow(new Error("Cannot lower temperature below 10"))
+      }).toThrow(new Error("Cannot lower temperature below 10 degrees"))
       });
+  it('has a power saving mode that maximises temperature to 25', function() {
+    thermostat.powerSaving = true;
+    for (var i = 20; i < 25; i++) {
+        thermostat.tempUp();
+    }
+    expect( function() { thermostat.tempUp()} ).toThrow(new Error("Power saving settings limit raising temperature."))
+  });
 });

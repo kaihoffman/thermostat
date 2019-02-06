@@ -1,6 +1,9 @@
 function Thermostat() {
   var temperature;
-  this.temperature = 20;
+  this.temperature = 20
+  this.MINIMUM_TEMPERATURE = 10;
+  var powerSaving;
+  this.powerSaving = true;
 };
 
 Thermostat.prototype.getTemp = function() {
@@ -8,14 +11,19 @@ Thermostat.prototype.getTemp = function() {
 };
 
 Thermostat.prototype.tempUp = function() {
-  this.temperature += 1;
+  if (this.powerSaving === true && this.temperature < 25) {
+    this.temperature += 1;
+  }
+  else {
+    throw new Error("Power saving settings limit raising temperature.")
+  }
 };
 
 Thermostat.prototype.tempDown = function() {
-  if (this.temperature > 10) {
+  if (this.temperature > this.MINIMUM_TEMPERATURE ) {
     this.temperature -= 1;
   }
   else {
-    throw new Error("Cannot lower temperature below 10");
+    throw new Error("Cannot lower temperature below " + this.MINIMUM_TEMPERATURE + " degrees");
   }
 };
