@@ -43,4 +43,12 @@ describe('Features', function() {
     expect(thermostat.powerSaving).toBe(true);
   });
 
+  it('Has a reset function that sets the temp to 20', function () {
+    for (var i = 20; i < 25; i++) {
+        thermostat.tempUp();
+    }
+    expect(thermostat.getTemp()).toBe(25)
+    thermostat.reset();
+    expect(thermostat.getTemp()).toBe(20)
+  });
 });

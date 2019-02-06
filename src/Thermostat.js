@@ -30,3 +30,7 @@ Thermostat.prototype.tempDown = function() {
     throw new Error("Cannot lower temperature below " + this.MINIMUM_TEMPERATURE + " degrees");
   }
 };
+
+Thermostat.prototype.reset = function() {
+  this.temperature = 20;
+};
