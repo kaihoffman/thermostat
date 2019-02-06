@@ -37,7 +37,10 @@ describe('Features', function() {
       thermostat.tempUp();
     }
     expect ( function() { thermostat.tempUp() }).toThrow(new Error("Temperature limit reached."))
-
-
   });
+
+  it('Power saving is on by default', function() {
+    expect(thermostat.powerSaving).toBe(true);
+  });
+
 });
