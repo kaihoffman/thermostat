@@ -16,4 +16,11 @@ describe('Features', function() {
     thermostat.tempDown();
     expect(thermostat.getTemp()).toBe(19);
     });
+  it('cannot be decreased below 10 degrees', function() {
+      for (var i = 0; i < 10; i++) {
+        thermostat.tempDown();
+      }
+      expect( function() {thermostat.tempDown()
+        }).toThrow(new Error("Cannot lower temperature below 10"))
+      });
 });

@@ -12,5 +12,10 @@ Thermostat.prototype.tempUp = function() {
 };
 
 Thermostat.prototype.tempDown = function() {
-  this.temperature -= 1;
+  if (this.temperature > 10) {
+    this.temperature -= 1;
+  }
+  else {
+    throw new Error("Cannot lower temperature below 10");
+  }
 };
