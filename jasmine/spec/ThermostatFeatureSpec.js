@@ -69,4 +69,22 @@ describe('Feature: Usage levels', function () {
       expect(thermostat.energyUsage()).toEqual('Low usage');
     });
   });
+  describe('Thermostat between 19 and 24', function () {
+    it('is medium usage', function () {
+      thermostat.tempDown();
+      expect(thermostat.energyUsage()).toEqual('Medium usage');
+      for (var i = 0; i < 3; i++) {
+        thermostat.tempUp();
+      }
+      expect(thermostat.energyUsage()).toEqual('Medium usage');
+    })
+  })
+  describe('Thermostat above 24', function () {
+    it ('is high usage', function () {
+      for (var i = 0; i < 5; i++) {
+        thermostat.tempUp();
+      }
+      expect(thermostat.energyUsage()).toEqual('High usage');
+    });
+  })
 });
