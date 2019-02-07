@@ -2,6 +2,7 @@ function Thermostat () {
   var temperature
   this.DEFAULT_TEMPERATURE = 20
   this.temperature = this.DEFAULT_TEMPERATURE
+  this.MEDIUM_USAGE_LIMIT = 18;
   this.MINIMUM_TEMPERATURE = 10
   var powerSaving
   this.powerSaving = true
@@ -37,9 +38,9 @@ Thermostat.prototype = {
     this.powerSaving = true
   },
   energyUsage: function () {
-    if (this.temperature < 18) {
+    if (this.temperature < this.MEDIUM_USAGE_LIMIT) {
       return ('Low usage')
-    } else if (this.temperature > 18 && this.temperature < 25) {
+    } else if (this.temperature > this.MEDIUM_USAGE_LIMIT && this.temperature < 25) {
       return ('Medium usage')
     } else return ('High usage')
   }
