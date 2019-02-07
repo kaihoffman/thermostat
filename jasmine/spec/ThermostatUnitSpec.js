@@ -4,8 +4,13 @@ describe('Unit tests', function() {
   beforeEach( function(){
     thermostat = new Thermostat();
   });
-  it('Has a reset function', function() {
-    expect( function() {thermostat.reset() }).not.toThrow(new Error)
+  it('has a function to set power saving off', function () {
+    thermostat.turnPowerSavingOff();
+    expect(thermostat.powerSaving).toBe(false);
   });
-
+  it('has a function to set power saving on', function () {
+    thermostat.turnPowerSavingOff();
+    thermostat.turnPowerSavingOn();
+    expect(thermostat.powerSaving).toBe(true);
+  })
 });
