@@ -1,6 +1,6 @@
 $(document).ready(function () {
   thermostat = new Thermostat;
-  $('#TempControl').text(thermostat.temperature);
+  updateTemperatureDisplay();
 })
 
 function updateTemperatureDisplay() {
@@ -14,5 +14,10 @@ $('#tempUp').on('click', function() {
 
 $('#tempDown').on('click', function () {
   thermostat.tempDown();
+  updateTemperatureDisplay();
+})
+
+$('#tempReset').on('click', function () {
+  thermostat.reset();
   updateTemperatureDisplay();
 })
